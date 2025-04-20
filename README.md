@@ -208,3 +208,34 @@ If you’ve never heard of terms like “LLM,” “RAG,” or “embeddings,”
 3. **Experiment with prompts** to see how context shapes AI answers.
 
 With these building blocks in place, you’ll have a chatbot that’s both **smart** and **reliable**, pulling answers straight from *your* documentation. Happy building!  
+
+## Monthly Cost Comparison: Pure Chat vs RAG Chat (ChromaDB Self‑Hosted)
+
+**Assumptions**  
+- **Model:** Google PaLM 2 Text Bison (`text‑bison‑001`)  
+- **Pricing:** \$0.00025 per 1 000 input tokens, \$0.0005 per 1 000 output tokens :contentReference[oaicite:0]{index=0}  
+- **Per‑query usage:**  
+  - **Pure Chat:** 100 input tokens + 400 output tokens  
+  - **RAG Chat:** 100 input tokens + 600 doc‑context tokens + 400 output tokens  
+- **Volume:** 5 000 queries per month  
+- **ChromaDB:** self‑hosted on a small VPS (~\$5/month)
+
+| Component             | Pure Chat                   | RAG Chat                         |
+|-----------------------|-----------------------------|----------------------------------|
+| **Tokens per Query**  | 100 in / 400 out            | 700 in / 400 out                 |
+| **Cost per Query**    | (0.1×\$0.00025)+(0.4×\$0.0005) = **\$0.000225** | (0.7×\$0.00025)+(0.4×\$0.0005) = **\$0.000375** |
+| **Monthly Token Cost**| 5 000×\$0.000225 = **\$1.13** | 5 000×\$0.000375 = **\$1.88**    |
+| **ChromaDB VPS**      | —                           | **\$5.00**                       |
+| **Total Monthly Cost**| **\$1.13**                  | **\$6.88**                       |
+
+> \*You can run ChromaDB on a basic DigitalOcean or AWS Lightsail droplet (~1 vCPU, 1 GB RAM) for around \$5/month.
+
+---
+
+### Key Takeaways
+
+- **Pure Chat** (no docs) costs only **\$1.13/month** for 5 000 queries.  
+- **RAG Chat** (grounded in *your* docs) is still **very economical** at **\$6.88/month**, including hosting your vector store.  
+
+For just an extra \$5.75/month, you gain **document‑backed accuracy** and reduce AI “hallucinations.”
+::contentReference[oaicite:1]{index=1}
