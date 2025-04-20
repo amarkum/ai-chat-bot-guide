@@ -245,11 +245,11 @@ Below is a side‑by‑side comparison of leading RAG setups. Each row shows the
 
 | Stack                                        | Base Model (MMLU)                         | RAG? | Fine‑Tune?               | Inference Cost (IN/OUT per 1 k tokens)           | Embedding Cost per 1 k | Add Docs Workflow                   | Est. Monthly Cost |
 |----------------------------------------------|-------------------------------------------|:----:|:-------------------------|:-----------------------------------------------|:----------------------|--------------------------------------|-------------------|
-| **LangChain + OpenAI GPT‑3.5 Turbo + ChromaDB** | GPT‑3.5 Turbo – 70.0 %     | ✅    | ✅ (OpenAI Fine‑Tune)       | \$0.0005 / \$0.0015        | \$0.0001  | Re‑run loader & upsert into ChromaDB | **\$5.00**       |
-| **LangChain + OpenAI GPT‑4 Turbo + ChromaDB**   | GPT‑4 Turbo – 86.4 %     | ✅    | ❌ (not supported yet)      | \$0.0100 / \$0.0300      | \$0.0001 :contentReference[oaicite:5]{index=5} | Re‑run loader & upsert into ChromaDB | **\$100.00**     |
+| **LangChain + OpenAI GPT‑3.5 Turbo + ChromaDB** | GPT‑3.5 Turbo – 70.0 %     | ✅    | ✅ (OpenAI Fine‑Tune)       | \$0.0005 / \$0.0015        | \$0.0001| Re‑run loader & upsert into ChromaDB | **\$5.00**       |
+| **LangChain + OpenAI GPT‑4 Turbo + ChromaDB**   | GPT‑4 Turbo – 86.4 %     | ✅    | ❌ (not supported yet)      | \$0.0100 / \$0.0300      | \$0.0001  | Re‑run loader & upsert into ChromaDB | **\$100.00**     |
 | **Vertex AI Doc Index + PaLM 2 Bison**            | PaLM 2 Bison – 81.2 %    | ✅    | ❌*                        | \$0.0005 / \$0.0005        | Managed (no extra)     | Upload & re‑index via Console        | **\$2.50**       |
-| **AWS Bedrock (Titan Text) + OpenSearch**        | Titan Text Premier – 70.5 % | ✅    | ✅ (Preview via SageMaker)  | \$0.0005 / \$0.0015       | Managed (no extra)     | Push docs → OpenSearch auto-sync     | **\$5.00**       |
-| **Azure CogSearch + Azure OpenAI**               | GPT‑3.5 Turbo – 70.0 %     | ✅    | ✅ (Azure Fine‑Tune)        | \$0.0015 / \$0.0020      | Managed (no extra)     | Update Search index via Portal       | **\$7.50**       |
+| **AWS Bedrock (Titan Text) + OpenSearch**        | Titan Text Premier – 70.5 %  | ✅    | ✅ (Preview via SageMaker)  | \$0.0005 / \$0.0015      | Managed (no extra)     | Push docs → OpenSearch auto-sync     | **\$5.00**       |
+| **Azure CogSearch + Azure OpenAI**               | GPT‑3.5 Turbo – 70.0 %    | ✅    | ✅ (Azure Fine‑Tune)        | \$0.0015 / \$0.0020      | Managed (no extra)     | Update Search index via Portal       | **\$7.50**       |
 
 \* PaLM 2 Bison can’t be weight‑level fine‑tuned; for model‑level training use Vertex AI’s Gemini fine‑tune pipeline.
 
