@@ -194,19 +194,19 @@ A fully bespoke chatbot pipeline where you control:
      │ Ingest & Chunk
      ▼
 ┌────────────┐     ┌─────────────┐     ┌───────────┐
-│ Embeddings │───▶│ Vector Store│───▶│ Retriever │
+│ Embeddings │───▶ │ Vector Store│───▶ │ Retriever │
 └────────────┘     └────┬────────┘     └────┬──────┘
-                            │                 │
-                            ▼                 │
-                       ┌───────────┐           │
-                       │ Prompt    │◀──────────┘
+                            │               │
+                            ▼               │
+                       ┌───────────┐        │
+                       │ Prompt    │◀───────┘
                        │ Builder   │
                        └────┬──────┘
                             │
                             ▼
                       ┌────────────┐
                       │  LLM Call  │
-                      └────┬───────┘
+                      └─── ─┬──────┘
                             │
                             ▼
                       ┌────────────┐
