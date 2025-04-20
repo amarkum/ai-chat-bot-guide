@@ -238,3 +238,39 @@ With these building blocks in place, you’ll have a chatbot that’s both **sma
 - **RAG Chat** (grounded in *your* docs) is still **very economical** at **\$6.88/month**, including hosting your vector store.  
 
 For just an extra \$5.75/month, you gain **document‑backed accuracy** and reduce AI “hallucinations.”
+
+## Full RAG Chatbot Stack Comparison
+
+Below is a side‑by‑side comparison of leading RAG setups. Each row shows the base model’s benchmark accuracy (MMLU), inference & embedding costs, fine‑tuning support, ease of updating your document index, and estimated monthly cost for **5 000 queries at 500 tokens/query**.
+
+| Stack                                        | Base Model (MMLU)                         | RAG? | Fine‑Tune?               | Inference Cost (IN/OUT per 1 k tokens)           | Embedding Cost per 1 k | Add Docs Workflow                   | Est. Monthly Cost |
+|----------------------------------------------|-------------------------------------------|:----:|:-------------------------|:-----------------------------------------------|:----------------------|--------------------------------------|-------------------|
+| **LangChain + OpenAI GPT‑3.5 Turbo + ChromaDB** | GPT‑3.5 Turbo – 70.0 % :contentReference[oaicite:0]{index=0}     | ✅    | ✅ (OpenAI Fine‑Tune)       | \$0.0005 / \$0.0015 :contentReference[oaicite:1]{index=1}         | \$0.0001 :contentReference[oaicite:2]{index=2} | Re‑run loader & upsert into ChromaDB | **\$5.00**       |
+| **LangChain + OpenAI GPT‑4 Turbo + ChromaDB**   | GPT‑4 Turbo – 86.4 % :contentReference[oaicite:3]{index=3}     | ✅    | ❌ (not supported yet)      | \$0.0100 / \$0.0300 :contentReference[oaicite:4]{index=4}       | \$0.0001 :contentReference[oaicite:5]{index=5} | Re‑run loader & upsert into ChromaDB | **\$100.00**     |
+| **Vertex AI Doc Index + PaLM 2 Bison**            | PaLM 2 Bison – 81.2 % :contentReference[oaicite:6]{index=6}     | ✅    | ❌*                        | \$0.0005 / \$0.0005        | Managed (no extra)     | Upload & re‑index via Console        | **\$2.50**       |
+| **AWS Bedrock (Titan Text) + OpenSearch**        | Titan Text Premier – 70.5 % :contentReference[oaicite:7]{index=7} | ✅    | ✅ (Preview via SageMaker)  | \$0.0005 / \$0.0015 :contentReference[oaicite:8]{index=8}       | Managed (no extra)     | Push docs → OpenSearch auto-sync     | **\$5.00**       |
+| **Azure CogSearch + Azure OpenAI**               | GPT‑3.5 Turbo – 70.0 % :contentReference[oaicite:9]{index=9}     | ✅    | ✅ (Azure Fine‑Tune)        | \$0.0015 / \$0.0020 :contentReference[oaicite:10]{index=10}       | Managed (no extra)     | Update Search index via Portal       | **\$7.50**       |
+
+\* PaLM 2 Bison can’t be weight‑level fine‑tuned; for model‑level training use Vertex AI’s Gemini fine‑tune pipeline.
+
+---
+
+### Notes
+
+- **Monthly Cost** is calculated as:  
+  \[(500 tokens ÷ 1 000) × (IN rate + OUT rate)\] × 5 000 queries  
+- **Embedding Cost** (self‑hosted stacks) is a one‑time ingestion fee; adding new docs later only incurs the embedding API charge.  
+- **Docs Workflow**: All solutions let you add or update documents and have them immediately serve future queries—either by re‑indexing (managed) or re‑ingesting/upserting (self‑hosted).
+
+---
+
+### Which Stack to Choose?
+
+- **Lowest Cost with RAG:**  
+  **Vertex AI Doc Index + PaLM 2 Bison** at **\$2.50/mo** for 5 000 queries.  
+- **Full Fine‑Tune Support:**  
+  **LangChain + OpenAI GPT‑3.5 Turbo** (\$5 /mo) or **AWS Bedrock (Titan Text)** (\$5 /mo).  
+- **Highest Accuracy:**  
+  **GPT‑4 Turbo** (\$100 /mo), with no fine‑tuning yet but top‑tier responses.
+
+By choosing any of these RAG pipelines, you can ground answers in **your** documents—and whenever you spot a missing or incorrect response, simply update your docs (or fine‑tune) so the next query is accurate.  
