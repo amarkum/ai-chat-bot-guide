@@ -265,9 +265,8 @@ A fully bespoke chatbot pipeline where you control:
    - Prepare Q&A CSV:
    ```csv
    prompt,completion
-   "Q: How to reset password?
-A:",
-   "You can reset your password by following these steps..."
+    Q: How to reset password?
+    A:You can reset your password by following these steps..."
    ```
    - Use OpenAI's Fine‑Tune API or Vertex AI Fine‑Tune to train on this data.
 5. **Deploy Backend & Frontend**  
