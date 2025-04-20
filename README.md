@@ -1,4 +1,4 @@
-# Chatbot Development Guide for Beginners
+# Chatbot Development Guide
 
 Welcome! This guide walks you through **three tiers** of chatbot complexity—from zero‑code plug‑and‑play to fully custom, model‑tuned solutions. Each section explains key concepts in plain language, lists the main components you’ll need, and shows step‑by‑step how to get started.
 
