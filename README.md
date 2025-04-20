@@ -102,7 +102,7 @@ A fully flexible chatbot where you control every layer: document retrieval, embe
 ```text
 Docs → LangChain → ChromaDB
 User Query → FastAPI → LangChain Retrieval → OpenAI GPT‑3.5 → FastAPI → React Widget
-
+```
 
 # A Beginner’s Guide to AI Chatbots and RAG
 
