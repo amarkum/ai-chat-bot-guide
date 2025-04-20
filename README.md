@@ -238,4 +238,3 @@ With these building blocks in place, you’ll have a chatbot that’s both **sma
 - **RAG Chat** (grounded in *your* docs) is still **very economical** at **\$6.88/month**, including hosting your vector store.  
 
 For just an extra \$5.75/month, you gain **document‑backed accuracy** and reduce AI “hallucinations.”
-::contentReference[oaicite:1]{index=1}
